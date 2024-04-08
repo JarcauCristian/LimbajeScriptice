@@ -1,5 +1,7 @@
 from fastapi.responses import JSONResponse
 import pandas as pd
+import os
+import uvicorn
 import numpy as np
 from typing import List
 from fastapi import FastAPI
@@ -58,3 +60,7 @@ async def load_model(prediction: Prediction):
 async def load_model(p1: float, p2: float, p3: float, p4: float):
     predictions = clf.predict([[p1, p2, p3, p4]])
     return "Nu este outlier!" if predictions[0] == 0 else "Este outlier!"
+
+
+if __name__ == '__main__':
+    uvicorn.run(app, host=os.getenv("HOST"), port=os.getenv("PORT"))

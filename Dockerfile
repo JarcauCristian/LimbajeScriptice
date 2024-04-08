@@ -11,3 +11,5 @@ RUN pip install -r requirements.txt
 COPY iris_cleaned.csv .
 
 COPY main.py .
+
+CMD ["python3", "main.py"]
